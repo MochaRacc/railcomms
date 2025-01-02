@@ -1,105 +1,73 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>{{ title }}</title>
+		<title>RailComms by Transnet</title>
 		<meta http-equiv="refresh" content="{{ refresh_interval }}">
 		<link href="https://https://transnetpt.com/ArminGrotesk/ArminGrotesk.css" rel="stylesheet" />
-		{% if issues %}<link rel="icon" type="image/png" href="down.png" />{% else %}<link rel="icon" type="image/png" href="up.png" />{% endif %}
-		<style type="text/css">
-			html, body {
-				margin: 0;
-				background-color: #F5F5F5;
-				font-family: 'Armin Grotesk';
-				font-size: 15px;
-				font-weight: 700;
-				letter-spacing: -0.0045em;
-			}
-			.container {
-				margin: 0 auto;
-				width: 800px;
-			}
-			h1 {
-				margin: 0;
-				padding: 50px 0 12px 0;
-				font-size: 35px;
-				font-weight: 500;
-			}
-			p {
-				margin: 0;
-				padding: 16px 16px 14px 16px;
-				font-size: 17px;
-				font-weight: 500;
-				border: 2px solid rgba(0, 0, 0, 0.1);
-				border-radius: 5px;
-			}
-			p.operational {
-				background-color: #4CAF50;
-				color: #FFFFFF;
-			}
-			p.issues {
-				background-color: #F44336;
-				color: #FFFFFF;
-			}
-			.group {
-				background-color: #FFFFFF;
-				border: 2px solid rgba(0, 0, 0, 0.1);
-				border-radius: 5px;
-				margin: 16px 0;
-				padding: 16px;
-			}
-			h2 {
-				margin: 0;
-				padding: 0 0 10px 0;
-				font-size: 23px;
-				font-weight: 500;
-			}
-			.items, .legend {
-				display: flex;
-				flex-direction: row;
-				flex-wrap: wrap;
-			}
-			.items .item {
-				flex: 0 0 25%;
-				margin: 7px 0;
-			}
-			.legend .item {
-				flex: 0 0 auto;
-				margin: 7px 18px;
-			}
-			.item.up::before {
-				content: "⬤";
-				color: #4CAF50;
-				font-size: 20px;
-				display: inline-block;
-				margin: 0 5px 0 0;
-			}
-			.item.down::before {
-				content: "⬤";
-				color: #F44336;
-				font-size: 20px;
-				display: inline-block;
-				margin: 0 5px 0 0;
-			}
-			footer {
-				margin-top: 20px;
-				text-align: center;
-				font-size: 12px;
-				color: #AAAAAA;
-			}
-		</style>
+		<link href="/style.css" rel="stylesheet" />
+		<link rel="icon" href="/favicon.png" sizes="any">
 	</head>
 	<body>
+		
 		<div class="container">
-			<h1>{{ title }}</h1>
-			{% if issues %}<p class="issues">Some lines are experiencing issues</p>{% else %}<p class="operational">All lines are operational</p>{% endif %}
-			{% for group in groups %}<div class="group">
-				<h2>{{ group.name }}</h2>
+			<a href="/"><img src="/logo.png" height="52px"></a>
+			<h1>Suburban services:</h1>
+			<!-- <p class="issues">Some lines are experiencing issues</p> -->
+			<p class="operational">All lines are operational</p>
+			<div class="group">
+				<h2>Northern Group</h2>
 				<div class="items">
-					{% for item in group.items %}<div class="item{% if item.is_up() %} up{% else %} down{% endif %}">{{ item.name }}</div>{% endfor %}
+			 <div class="service good">Lyndale</div>
+			 <div class="service good">Kathryn</div>
+			 <div class="service good">Southmead</div>
+			 <div class="service good">Murray</div>
 				</div>
-			</div>{% endfor %}
-			<div class="legend"><div class="item up">Up</div><div class="item down">Down</div></div>
-			<footer>Current server time: {{ current_time }}<br />(refreshing every {{ refresh_interval }} seconds)</footer>
+				</div>
+				<div class="group">
+				<h2>Eastern Group</h2>
+					<div class="items">
+				 <div class="service good">Fairmead</div>
+				 <div class="service good">Avandale</div>
+	 			</div>
+				</div>
+				<div class="group">
+					<h2>Talletyne Line</h2>
+						<div class="items">
+					 <div class="service good">Tallentyne</div>
+					 </div>
+					</div>	
+				<div class="group">
+				<h2>Cross City Group</h2>
+					<div class="items">
+				 <div class="service good">Avandale</div>
+				 <div class="service good">Moorinallea</div>
+				 <div class="service good">Wellington</div>
+				 <div class="service good">Wynthorpe</div>
+					</div>
+					</div>
+					<h1>Regional services:</h1>
+					<!-- <p class="issues">Some lines are experiencing issues</p> -->
+					<p class="operational">All lines are operational</p>
+					<div class="group">
+							<div class="items">
+						 <div class="service good">Tottenham</div>
+						 <div class="service good">Denton</div>
+						 <div class="service good">Wytcombe</div>
+						 <div class="service good">Queensbourough</div>
+						 <div class="service good">Harold Point</div>
+							</div>
+							</div>
+					<div class="group">
+						<h2>Line Status legend:</h2>
+							<div class="items">
+								<div class="service good">Good Service</div>
+								<div class="service major">Major Delays</div>
+								<div class="service minor">Minor Delays</div>
+								<div class="service cancelled">Cancellation</div>
+								<div class="service works">Works Ahead</div>
+								<div class="service suspend">Suspended</div>
+							</div>
+			<footer>Copyright 2025 - Transnet<br />RailComms is maintainced by Transnet's Operations Centre division.</footer>
 		</div>
 	</body>
 </html>
